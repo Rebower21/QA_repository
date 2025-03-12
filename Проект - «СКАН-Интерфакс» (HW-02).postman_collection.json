@@ -1,0 +1,285 @@
+{
+	"info": {
+		"_postman_id": "6e13f811-2e74-4558-87a5-ea8245c393f6",
+		"name": "Проект: реальный кейс от компании «СКАН-Интерфакс» (HW-02)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38932297"
+	},
+	"item": [
+		{
+			"name": "Авторизация пользователя",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"pm.collectionVariables.set(\"auth_token\", response.accessToken); \r",
+							"console.log(\"Токен сохранен:\", pm.collectionVariables.get(\"auth_token\"));"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"login\": \"{{test_login}}\",\r\n  \"password\": \"{{test_password}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://gateway.scan-interfax.ru/api/v1/account/login",
+					"protocol": "https",
+					"host": [
+						"gateway",
+						"scan-interfax",
+						"ru"
+					],
+					"path": [
+						"api",
+						"v1",
+						"account",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Получения баланса",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"const response = pm.response.json();\r",
+							"pm.collectionVariables.set(\"current_balance\", response.balance);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://gateway.scan-interfax.ru/api/v1/account/balance",
+					"protocol": "https",
+					"host": [
+						"gateway",
+						"scan-interfax",
+						"ru"
+					],
+					"path": [
+						"api",
+						"v1",
+						"account",
+						"balance"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Получение тем публикации",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"const response = pm.response.json();\r",
+							"const subjects = response.subjects;\r",
+							"if (subjects && subjects.length > 0) {\r",
+							"    pm.collectionVariables.set(\"subjects_name1\", subjects[0].name);\r",
+							"    pm.collectionVariables.set(\"subjects_name2\", subjects[1].name);\r",
+							"    pm.collectionVariables.set(\"subjects_name3\", subjects[2].name);\r",
+							"    pm.collectionVariables.set(\"subjects_total\", response.totalCount);\r",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://gateway.scan-interfax.ru/api/v1/entities/subjects?index=0&pageSize=3",
+					"protocol": "https",
+					"host": [
+						"gateway",
+						"scan-interfax",
+						"ru"
+					],
+					"path": [
+						"api",
+						"v1",
+						"entities",
+						"subjects"
+					],
+					"query": [
+						{
+							"key": "index",
+							"value": "0"
+						},
+						{
+							"key": "pageSize",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Получение ScanDoc",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"const response = pm.response.json();\r",
+							"console.log(\"Полный ответ:\", response);\r",
+							"\r",
+							"if (Array.isArray(response) && response.length > 0) {\r",
+							"    pm.collectionVariables.set(\"news_agent_1\", response[0].ok.source.name);\r",
+							"    pm.collectionVariables.set(\"news_agent_2\", response[1].ok.source.name);\r",
+							"    console.log(\"Данные сохранены в переменные коллекции\");\r",
+							"} else {\r",
+							"    console.log(\"Ответ пуст или не является массивом\");\r",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"ids\": [\r\n    \"1:0JPQqdGM0JNWCdCzf2Jt0LHQotGV0ZUh0ZbRlBXCt0Je0JHQruKAnDcUXkZQ0YvQscKnehLRnNC1KtGK0Ll9BWLigLo/HXXCrhw=\",\r\n    \"1:fmYoHEjQrRbQhz3RiUtm4oCh0JLRmtCLIyU10IzigqzRgGjQmCoR0JFg0YRhwrVzN9CxDUM50KcpdTbRiNCLwpjRkuKAphXRkVxh0JU50K5uWdC50L7RjX0C0KwQRsKp\"\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://gateway.scan-interfax.ru/api/v1/documents",
+					"protocol": "https",
+					"host": [
+						"gateway",
+						"scan-interfax",
+						"ru"
+					],
+					"path": [
+						"api",
+						"v1",
+						"documents"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{auth_token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "auth_token",
+			"value": ""
+		},
+		{
+			"key": "current_balance",
+			"value": ""
+		},
+		{
+			"key": "test_login",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "test_password",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "subjects_name1",
+			"value": ""
+		},
+		{
+			"key": "subjects_name2",
+			"value": ""
+		},
+		{
+			"key": "subjects_name3",
+			"value": ""
+		},
+		{
+			"key": "subjects_total",
+			"value": ""
+		},
+		{
+			"key": "news_agent_1",
+			"value": ""
+		},
+		{
+			"key": "news_agent_2",
+			"value": ""
+		}
+	]
+}

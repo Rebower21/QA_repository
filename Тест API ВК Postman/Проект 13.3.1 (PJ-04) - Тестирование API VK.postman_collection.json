@@ -1,0 +1,484 @@
+{
+	"info": {
+		"_postman_id": "743c151c-a7ac-4a6a-a208-1a5c3cb90ef1",
+		"name": "Проект 13.3.1 (PJ-04) - Тестирование API VK",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38932297"
+	},
+	"item": [
+		{
+			"name": "1. Создание альбома",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.vk.com/method/photos.createAlbum?title=Мой альбом&description=Тестовый альбом&access_token=vk1.a.oglwfAkpT-b1jkdn8qwTfstcUoVSwDAUP6k0yela3mlh0VVoJpNhjq48q9mmj09MO8zD-VpZQqkbjSKHBTpeJDb-aBDcDgacS6hPLgbqx41PVzuL07Hdt0DVV1TnZmdmNkxrR_EPlkhqZipmLGBjJ_u4V1_rrw-7DGED1q0vXHeBMaQwBMUfVSRGZb-hWmocTzzqQJ8WkyoXenqLs-H2WQ&v=5.131",
+					"protocol": "https",
+					"host": [
+						"api",
+						"vk",
+						"com"
+					],
+					"path": [
+						"method",
+						"photos.createAlbum"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "Мой альбом"
+						},
+						{
+							"key": "description",
+							"value": "Тестовый альбом"
+						},
+						{
+							"key": "access_token",
+							"value": "vk1.a.oglwfAkpT-b1jkdn8qwTfstcUoVSwDAUP6k0yela3mlh0VVoJpNhjq48q9mmj09MO8zD-VpZQqkbjSKHBTpeJDb-aBDcDgacS6hPLgbqx41PVzuL07Hdt0DVV1TnZmdmNkxrR_EPlkhqZipmLGBjJ_u4V1_rrw-7DGED1q0vXHeBMaQwBMUfVSRGZb-hWmocTzzqQJ8WkyoXenqLs-H2WQ"
+						},
+						{
+							"key": "v",
+							"value": "5.131"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2. Получение адреса для загрузки фото",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.vk.com/method/photos.getUploadServer?album_id=306489063&access_token=vk1.a.oglwfAkpT-b1jkdn8qwTfstcUoVSwDAUP6k0yela3mlh0VVoJpNhjq48q9mmj09MO8zD-VpZQqkbjSKHBTpeJDb-aBDcDgacS6hPLgbqx41PVzuL07Hdt0DVV1TnZmdmNkxrR_EPlkhqZipmLGBjJ_u4V1_rrw-7DGED1q0vXHeBMaQwBMUfVSRGZb-hWmocTzzqQJ8WkyoXenqLs-H2WQ&v=5.131",
+					"protocol": "https",
+					"host": [
+						"api",
+						"vk",
+						"com"
+					],
+					"path": [
+						"method",
+						"photos.getUploadServer"
+					],
+					"query": [
+						{
+							"key": "album_id",
+							"value": "306489063"
+						},
+						{
+							"key": "access_token",
+							"value": "vk1.a.oglwfAkpT-b1jkdn8qwTfstcUoVSwDAUP6k0yela3mlh0VVoJpNhjq48q9mmj09MO8zD-VpZQqkbjSKHBTpeJDb-aBDcDgacS6hPLgbqx41PVzuL07Hdt0DVV1TnZmdmNkxrR_EPlkhqZipmLGBjJ_u4V1_rrw-7DGED1q0vXHeBMaQwBMUfVSRGZb-hWmocTzzqQJ8WkyoXenqLs-H2WQ"
+						},
+						{
+							"key": "v",
+							"value": "5.131"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3. Загрузка фотографии на сервер",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file1",
+							"type": "file",
+							"src": "postman-cloud:///1effdb20-129b-4010-ba6d-273b5fec8a33"
+						},
+						{
+							"key": "file2",
+							"type": "file",
+							"src": "postman-cloud:///1effdb20-5b26-4c80-b849-291bb605c498"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://pu.vk.com/c908419/ss2017/upload.php?act=do_add&mid=135974410&aid=306489063&gid=0&hash=4dc7b0bb8ebc384d3855ccb11a2f3597&rhash=a640853b5f98919966452ef531136fff&swfupload=1&api=1",
+					"protocol": "https",
+					"host": [
+						"pu",
+						"vk",
+						"com"
+					],
+					"path": [
+						"c908419",
+						"ss2017",
+						"upload.php"
+					],
+					"query": [
+						{
+							"key": "act",
+							"value": "do_add"
+						},
+						{
+							"key": "mid",
+							"value": "135974410"
+						},
+						{
+							"key": "aid",
+							"value": "306489063"
+						},
+						{
+							"key": "gid",
+							"value": "0"
+						},
+						{
+							"key": "hash",
+							"value": "4dc7b0bb8ebc384d3855ccb11a2f3597"
+						},
+						{
+							"key": "rhash",
+							"value": "a640853b5f98919966452ef531136fff"
+						},
+						{
+							"key": "swfupload",
+							"value": "1"
+						},
+						{
+							"key": "api",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4. Сохранения фотографий в альбом",
+			"protocolProfileBehavior": {
+				"followRedirects": true,
+				"disableUrlEncoding": false
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://api.vk.com/method/photos.save?access_token=vk1.a.oglwfAkpT-b1jkdn8qwTfstcUoVSwDAUP6k0yela3mlh0VVoJpNhjq48q9mmj09MO8zD-VpZQqkbjSKHBTpeJDb-aBDcDgacS6hPLgbqx41PVzuL07Hdt0DVV1TnZmdmNkxrR_EPlkhqZipmLGBjJ_u4V1_rrw-7DGED1q0vXHeBMaQwBMUfVSRGZb-hWmocTzzqQJ8WkyoXenqLs-H2WQ&album_id=306489063&server=908419&photos_list=[{\"markers_restarted\":true,\"photo\":\"f15d4e7022:w\",\"sizes\":[],\"latitude\":0,\"longitude\":0,\"kid\":\"4d3700aabed7797550c8dd892b5254c4\",\"sizes2\":[[\"s\",\"63fd530ef1796c81f127e02be2c23de710f86bec36db37d29652eda7\",\"-2927358923090802154\",75,35],[\"m\",\"2cd85b2e52b51aee0c56ffa709a33ea25731c29ac644c966cdb3ab8b\",\"-7692729712364345224\",130,61],[\"x\",\"f234242ff05d4b52edcd1675eeacf90e39e54feeed2dfd44a7e5896c\",\"6020204208603648477\",604,284],[\"y\",\"77efcba13966fe00a247c4c77e53028b0f2639b4270dac29e7acb320\",\"4213179943290906608\",807,380],[\"z\",\"c96865caa53f6e66aad5c77d9c19418de944513b17e89ee517ce88c5\",\"3323740847278840908\",1280,603],[\"w\",\"9a4c80273636f2c81a601bc1f0f661b3f200e8a12d9a34e175862b62\",\"6234207119685905734\",1926,908],[\"o\",\"c2be3c2c19501d7c4b94b098ed29921c56fb68f1e5f81182c9933cf5\",\"6681590943177561911\",130,87],[\"p\",\"04329a01df538de9ce8487fcdc30f569ecafffd3e0b8d5064fdc28d2\",\"53249361912151849\",200,133],[\"q\",\"4d654fffe30c7fc2a5d885b2a9119b9faea1829b6bfc5842417f8fa2\",\"-1532222364662638114\",320,213],[\"r\",\"b6ab62d3ed0b33d4062b1ea20fe39c6287352c3d06d86ef16f844301\",\"5134809047371660195\",510,340]],\"urls\":[],\"urls2\":[\"Y_1TDvF5bIHxJ-Ar4sI95xD4a-w22zfSllLtpw/Fkoau5HuX9c.jpg\",\"LNhbLlK1Gu4MVv-nCaM-olcxwprGRMlmzbOriw/eChunRXvPZU.jpg\",\"8jQkL_BdS1LtzRZ17qz5DjnlT-7tLf1Ep-WJbA/3dEh0dQPjFM.jpg\",\"d-_LoTlm_gCiR8THflMCiw8mObQnDawp56yzIA/8KenBtY4eDo.jpg\",\"yWhlyqU_bmaq1cd9nBlBjelEUTsX6J7lF86IxQ/TNyCz7BMIC4.jpg\",\"mkyAJzY28sgaYBvB8PZhs_IA6KEtmjThdYYrYg/Ru0WWVhahFY.jpg\",\"wr48LBlQHXxLlLCY7SmSHFb7aPHl-BGCyZM89Q/N9eQ7o_HuVw.jpg\",\"BDKaAd9TjenOhIf83DD1aeyv_9PguNUGT9wo0g/KT9KNQMuvQA.jpg\",\"TWVP_-MMf8Kl2IWyqRGbn66hgptr_FhCQX-Pog/3tlfneBzvOo.jpg\",\"tqti0-0LM9QGKx6iD-OcYoc1LD0G2G7xb4RDAQ/o7sMip-BQkc.jpg\"]},{\"markers_restarted\":true,\"photo\":\"57ddbc5bdf:w\",\"sizes\":[],\"latitude\":0,\"longitude\":0,\"kid\":\"5e5cb98552ab59392bc7654d2d228cb5\",\"sizes2\":[[\"s\",\"c916f4f4e53afae7a6a42adce1a5f2549b5aca928f13d72e9cea3a9e\",\"1069000656156695273\",75,38],[\"m\",\"9ae36748a1bf8fadf92e57a4b38f39541d5a6f2fbfa91167f2c49fa8\",\"5027100927584526208\",130,66],[\"x\",\"b92401f07b94f5019130bf60e26a2b14847cff460b5dd53f5fe46b1b\",\"2135594959416240013\",604,305],[\"y\",\"0177f8d9c159c46141002f5008b67ff296e0e3a5b6aef68779e7c03d\",\"-492844999899597377\",807,407],[\"z\",\"03d3a64f621fff1e39867ef54082d7aa6855d6a172dba75f43c95273\",\"-8559234004758139070\",1280,646],[\"w\",\"ba8c43c63a81a1cb70091b49e8b67e503dbe7c9da0b091580550cbcc\",\"2030643478381633250\",1876,947],[\"o\",\"f965c94a74147101403b9c0c36ca2bbe83f82b758c424c3c3d826412\",\"7272110338078543560\",130,87],[\"p\",\"d2eac57c5d74ee6aa49f578d3a7780d8b19ea5c38c2e585b8edfbdd3\",\"-727344190134244614\",200,133],[\"q\",\"3c779a80f9723b3bf3bd7693de916c97f68018cdcc872d5f14c2c09e\",\"-1599483350910673964\",320,213],[\"r\",\"11df32909c7385f8f10adbf3617e62adbb8ab939ad040fd8a7b981e8\",\"4141375992737495218\",510,340]],\"urls\":[],\"urls2\":[\"yRb09OU6-uempCrc4aXyVJtaypKPE9cunOo6ng/6Rrh1m7a1Q4.jpg\",\"muNnSKG_j635Lleks485VB1aby-_qRFn8sSfqA/gF-2rqjZw0U.jpg\",\"uSQB8HuU9QGRML9g4morFIR8_0YLXdU_X-RrGw/jace_Ewoox0.jpg\",\"AXf42cFZxGFBAC9QCLZ_8pbg46W2rvaHeefAPQ/vzWocxUQKfk.jpg\",\"A9OmT2If_x45hn71QILXqmhV1qFy26dfQ8lScw/Qm_yfAV-N4k.jpg\",\"uoxDxjqBoctwCRtJ6LZ-UD2-fJ2gsJFYBVDLzA/4p5mGnxLLhw.jpg\",\"-WXJSnQUcQFAO5wMNsorvoP4K3WMQkw8PYJkEg/yA6evNK562Q.jpg\",\"0urFfF107mqkn1eNOneA2LGepcOMLlhbjt-90w/-qqaDVD05_U.jpg\",\"PHeagPlyOzvzvXaT3pFsl_aAGM3Mhy1fFMLAng/1FvR5F1-zek.jpg\",\"Ed8ykJxzhfjxCtvzYX5irbuKuTmtBA_Yp7mB6A/svhyAIYfeTk.jpg\"]}]&hash=b781e4e547f7475c2ea6e302842ed3fd&v=5.131",
+					"protocol": "https",
+					"host": [
+						"api",
+						"vk",
+						"com"
+					],
+					"path": [
+						"method",
+						"photos.save"
+					],
+					"query": [
+						{
+							"key": "access_token",
+							"value": "vk1.a.oglwfAkpT-b1jkdn8qwTfstcUoVSwDAUP6k0yela3mlh0VVoJpNhjq48q9mmj09MO8zD-VpZQqkbjSKHBTpeJDb-aBDcDgacS6hPLgbqx41PVzuL07Hdt0DVV1TnZmdmNkxrR_EPlkhqZipmLGBjJ_u4V1_rrw-7DGED1q0vXHeBMaQwBMUfVSRGZb-hWmocTzzqQJ8WkyoXenqLs-H2WQ"
+						},
+						{
+							"key": "album_id",
+							"value": "306489063"
+						},
+						{
+							"key": "server",
+							"value": "908419"
+						},
+						{
+							"key": "photos_list",
+							"value": "[{\"markers_restarted\":true,\"photo\":\"f15d4e7022:w\",\"sizes\":[],\"latitude\":0,\"longitude\":0,\"kid\":\"4d3700aabed7797550c8dd892b5254c4\",\"sizes2\":[[\"s\",\"63fd530ef1796c81f127e02be2c23de710f86bec36db37d29652eda7\",\"-2927358923090802154\",75,35],[\"m\",\"2cd85b2e52b51aee0c56ffa709a33ea25731c29ac644c966cdb3ab8b\",\"-7692729712364345224\",130,61],[\"x\",\"f234242ff05d4b52edcd1675eeacf90e39e54feeed2dfd44a7e5896c\",\"6020204208603648477\",604,284],[\"y\",\"77efcba13966fe00a247c4c77e53028b0f2639b4270dac29e7acb320\",\"4213179943290906608\",807,380],[\"z\",\"c96865caa53f6e66aad5c77d9c19418de944513b17e89ee517ce88c5\",\"3323740847278840908\",1280,603],[\"w\",\"9a4c80273636f2c81a601bc1f0f661b3f200e8a12d9a34e175862b62\",\"6234207119685905734\",1926,908],[\"o\",\"c2be3c2c19501d7c4b94b098ed29921c56fb68f1e5f81182c9933cf5\",\"6681590943177561911\",130,87],[\"p\",\"04329a01df538de9ce8487fcdc30f569ecafffd3e0b8d5064fdc28d2\",\"53249361912151849\",200,133],[\"q\",\"4d654fffe30c7fc2a5d885b2a9119b9faea1829b6bfc5842417f8fa2\",\"-1532222364662638114\",320,213],[\"r\",\"b6ab62d3ed0b33d4062b1ea20fe39c6287352c3d06d86ef16f844301\",\"5134809047371660195\",510,340]],\"urls\":[],\"urls2\":[\"Y_1TDvF5bIHxJ-Ar4sI95xD4a-w22zfSllLtpw/Fkoau5HuX9c.jpg\",\"LNhbLlK1Gu4MVv-nCaM-olcxwprGRMlmzbOriw/eChunRXvPZU.jpg\",\"8jQkL_BdS1LtzRZ17qz5DjnlT-7tLf1Ep-WJbA/3dEh0dQPjFM.jpg\",\"d-_LoTlm_gCiR8THflMCiw8mObQnDawp56yzIA/8KenBtY4eDo.jpg\",\"yWhlyqU_bmaq1cd9nBlBjelEUTsX6J7lF86IxQ/TNyCz7BMIC4.jpg\",\"mkyAJzY28sgaYBvB8PZhs_IA6KEtmjThdYYrYg/Ru0WWVhahFY.jpg\",\"wr48LBlQHXxLlLCY7SmSHFb7aPHl-BGCyZM89Q/N9eQ7o_HuVw.jpg\",\"BDKaAd9TjenOhIf83DD1aeyv_9PguNUGT9wo0g/KT9KNQMuvQA.jpg\",\"TWVP_-MMf8Kl2IWyqRGbn66hgptr_FhCQX-Pog/3tlfneBzvOo.jpg\",\"tqti0-0LM9QGKx6iD-OcYoc1LD0G2G7xb4RDAQ/o7sMip-BQkc.jpg\"]},{\"markers_restarted\":true,\"photo\":\"57ddbc5bdf:w\",\"sizes\":[],\"latitude\":0,\"longitude\":0,\"kid\":\"5e5cb98552ab59392bc7654d2d228cb5\",\"sizes2\":[[\"s\",\"c916f4f4e53afae7a6a42adce1a5f2549b5aca928f13d72e9cea3a9e\",\"1069000656156695273\",75,38],[\"m\",\"9ae36748a1bf8fadf92e57a4b38f39541d5a6f2fbfa91167f2c49fa8\",\"5027100927584526208\",130,66],[\"x\",\"b92401f07b94f5019130bf60e26a2b14847cff460b5dd53f5fe46b1b\",\"2135594959416240013\",604,305],[\"y\",\"0177f8d9c159c46141002f5008b67ff296e0e3a5b6aef68779e7c03d\",\"-492844999899597377\",807,407],[\"z\",\"03d3a64f621fff1e39867ef54082d7aa6855d6a172dba75f43c95273\",\"-8559234004758139070\",1280,646],[\"w\",\"ba8c43c63a81a1cb70091b49e8b67e503dbe7c9da0b091580550cbcc\",\"2030643478381633250\",1876,947],[\"o\",\"f965c94a74147101403b9c0c36ca2bbe83f82b758c424c3c3d826412\",\"7272110338078543560\",130,87],[\"p\",\"d2eac57c5d74ee6aa49f578d3a7780d8b19ea5c38c2e585b8edfbdd3\",\"-727344190134244614\",200,133],[\"q\",\"3c779a80f9723b3bf3bd7693de916c97f68018cdcc872d5f14c2c09e\",\"-1599483350910673964\",320,213],[\"r\",\"11df32909c7385f8f10adbf3617e62adbb8ab939ad040fd8a7b981e8\",\"4141375992737495218\",510,340]],\"urls\":[],\"urls2\":[\"yRb09OU6-uempCrc4aXyVJtaypKPE9cunOo6ng/6Rrh1m7a1Q4.jpg\",\"muNnSKG_j635Lleks485VB1aby-_qRFn8sSfqA/gF-2rqjZw0U.jpg\",\"uSQB8HuU9QGRML9g4morFIR8_0YLXdU_X-RrGw/jace_Ewoox0.jpg\",\"AXf42cFZxGFBAC9QCLZ_8pbg46W2rvaHeefAPQ/vzWocxUQKfk.jpg\",\"A9OmT2If_x45hn71QILXqmhV1qFy26dfQ8lScw/Qm_yfAV-N4k.jpg\",\"uoxDxjqBoctwCRtJ6LZ-UD2-fJ2gsJFYBVDLzA/4p5mGnxLLhw.jpg\",\"-WXJSnQUcQFAO5wMNsorvoP4K3WMQkw8PYJkEg/yA6evNK562Q.jpg\",\"0urFfF107mqkn1eNOneA2LGepcOMLlhbjt-90w/-qqaDVD05_U.jpg\",\"PHeagPlyOzvzvXaT3pFsl_aAGM3Mhy1fFMLAng/1FvR5F1-zek.jpg\",\"Ed8ykJxzhfjxCtvzYX5irbuKuTmtBA_Yp7mB6A/svhyAIYfeTk.jpg\"]}]"
+						},
+						{
+							"key": "hash",
+							"value": "b781e4e547f7475c2ea6e302842ed3fd"
+						},
+						{
+							"key": "v",
+							"value": "5.131"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5. Получение списка фото в альбоме",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.vk.com/method/photos.get?album_id=306489063&access_token=vk1.a.oglwfAkpT-b1jkdn8qwTfstcUoVSwDAUP6k0yela3mlh0VVoJpNhjq48q9mmj09MO8zD-VpZQqkbjSKHBTpeJDb-aBDcDgacS6hPLgbqx41PVzuL07Hdt0DVV1TnZmdmNkxrR_EPlkhqZipmLGBjJ_u4V1_rrw-7DGED1q0vXHeBMaQwBMUfVSRGZb-hWmocTzzqQJ8WkyoXenqLs-H2WQ&v=5.131",
+					"protocol": "https",
+					"host": [
+						"api",
+						"vk",
+						"com"
+					],
+					"path": [
+						"method",
+						"photos.get"
+					],
+					"query": [
+						{
+							"key": "album_id",
+							"value": "306489063"
+						},
+						{
+							"key": "access_token",
+							"value": "vk1.a.oglwfAkpT-b1jkdn8qwTfstcUoVSwDAUP6k0yela3mlh0VVoJpNhjq48q9mmj09MO8zD-VpZQqkbjSKHBTpeJDb-aBDcDgacS6hPLgbqx41PVzuL07Hdt0DVV1TnZmdmNkxrR_EPlkhqZipmLGBjJ_u4V1_rrw-7DGED1q0vXHeBMaQwBMUfVSRGZb-hWmocTzzqQJ8WkyoXenqLs-H2WQ"
+						},
+						{
+							"key": "v",
+							"value": "5.131"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "6. Добавление комментария",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://api.vk.com/method/photos.createComment?photo_id=457245971&message=Любите маму&access_token=vk1.a.oglwfAkpT-b1jkdn8qwTfstcUoVSwDAUP6k0yela3mlh0VVoJpNhjq48q9mmj09MO8zD-VpZQqkbjSKHBTpeJDb-aBDcDgacS6hPLgbqx41PVzuL07Hdt0DVV1TnZmdmNkxrR_EPlkhqZipmLGBjJ_u4V1_rrw-7DGED1q0vXHeBMaQwBMUfVSRGZb-hWmocTzzqQJ8WkyoXenqLs-H2WQ&v=5.131",
+					"protocol": "https",
+					"host": [
+						"api",
+						"vk",
+						"com"
+					],
+					"path": [
+						"method",
+						"photos.createComment"
+					],
+					"query": [
+						{
+							"key": "photo_id",
+							"value": "457245971"
+						},
+						{
+							"key": "message",
+							"value": "Любите маму"
+						},
+						{
+							"key": "access_token",
+							"value": "vk1.a.oglwfAkpT-b1jkdn8qwTfstcUoVSwDAUP6k0yela3mlh0VVoJpNhjq48q9mmj09MO8zD-VpZQqkbjSKHBTpeJDb-aBDcDgacS6hPLgbqx41PVzuL07Hdt0DVV1TnZmdmNkxrR_EPlkhqZipmLGBjJ_u4V1_rrw-7DGED1q0vXHeBMaQwBMUfVSRGZb-hWmocTzzqQJ8WkyoXenqLs-H2WQ"
+						},
+						{
+							"key": "v",
+							"value": "5.131"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "6.1 Добавление комментария к другому фото",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://api.vk.com/method/photos.createComment?photo_id=457245972&message=Не огорчай горчицу&access_token=vk1.a.oglwfAkpT-b1jkdn8qwTfstcUoVSwDAUP6k0yela3mlh0VVoJpNhjq48q9mmj09MO8zD-VpZQqkbjSKHBTpeJDb-aBDcDgacS6hPLgbqx41PVzuL07Hdt0DVV1TnZmdmNkxrR_EPlkhqZipmLGBjJ_u4V1_rrw-7DGED1q0vXHeBMaQwBMUfVSRGZb-hWmocTzzqQJ8WkyoXenqLs-H2WQ&v=5.131",
+					"protocol": "https",
+					"host": [
+						"api",
+						"vk",
+						"com"
+					],
+					"path": [
+						"method",
+						"photos.createComment"
+					],
+					"query": [
+						{
+							"key": "photo_id",
+							"value": "457245972"
+						},
+						{
+							"key": "message",
+							"value": "Не огорчай горчицу"
+						},
+						{
+							"key": "access_token",
+							"value": "vk1.a.oglwfAkpT-b1jkdn8qwTfstcUoVSwDAUP6k0yela3mlh0VVoJpNhjq48q9mmj09MO8zD-VpZQqkbjSKHBTpeJDb-aBDcDgacS6hPLgbqx41PVzuL07Hdt0DVV1TnZmdmNkxrR_EPlkhqZipmLGBjJ_u4V1_rrw-7DGED1q0vXHeBMaQwBMUfVSRGZb-hWmocTzzqQJ8WkyoXenqLs-H2WQ"
+						},
+						{
+							"key": "v",
+							"value": "5.131"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "7. Редактирование комментария",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://api.vk.com/method/photos.editComment?comment_id=882&message=Цените маму&access_token=vk1.a.oglwfAkpT-b1jkdn8qwTfstcUoVSwDAUP6k0yela3mlh0VVoJpNhjq48q9mmj09MO8zD-VpZQqkbjSKHBTpeJDb-aBDcDgacS6hPLgbqx41PVzuL07Hdt0DVV1TnZmdmNkxrR_EPlkhqZipmLGBjJ_u4V1_rrw-7DGED1q0vXHeBMaQwBMUfVSRGZb-hWmocTzzqQJ8WkyoXenqLs-H2WQ&v=5.131",
+					"protocol": "https",
+					"host": [
+						"api",
+						"vk",
+						"com"
+					],
+					"path": [
+						"method",
+						"photos.editComment"
+					],
+					"query": [
+						{
+							"key": "comment_id",
+							"value": "882"
+						},
+						{
+							"key": "message",
+							"value": "Цените маму"
+						},
+						{
+							"key": "access_token",
+							"value": "vk1.a.oglwfAkpT-b1jkdn8qwTfstcUoVSwDAUP6k0yela3mlh0VVoJpNhjq48q9mmj09MO8zD-VpZQqkbjSKHBTpeJDb-aBDcDgacS6hPLgbqx41PVzuL07Hdt0DVV1TnZmdmNkxrR_EPlkhqZipmLGBjJ_u4V1_rrw-7DGED1q0vXHeBMaQwBMUfVSRGZb-hWmocTzzqQJ8WkyoXenqLs-H2WQ"
+						},
+						{
+							"key": "v",
+							"value": "5.131"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "8. Удаление фото",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://api.vk.com/method/photos.delete?photo_id=457245972&access_token=vk1.a.oglwfAkpT-b1jkdn8qwTfstcUoVSwDAUP6k0yela3mlh0VVoJpNhjq48q9mmj09MO8zD-VpZQqkbjSKHBTpeJDb-aBDcDgacS6hPLgbqx41PVzuL07Hdt0DVV1TnZmdmNkxrR_EPlkhqZipmLGBjJ_u4V1_rrw-7DGED1q0vXHeBMaQwBMUfVSRGZb-hWmocTzzqQJ8WkyoXenqLs-H2WQ&v=5.131",
+					"protocol": "https",
+					"host": [
+						"api",
+						"vk",
+						"com"
+					],
+					"path": [
+						"method",
+						"photos.delete"
+					],
+					"query": [
+						{
+							"key": "photo_id",
+							"value": "457245972"
+						},
+						{
+							"key": "access_token",
+							"value": "vk1.a.oglwfAkpT-b1jkdn8qwTfstcUoVSwDAUP6k0yela3mlh0VVoJpNhjq48q9mmj09MO8zD-VpZQqkbjSKHBTpeJDb-aBDcDgacS6hPLgbqx41PVzuL07Hdt0DVV1TnZmdmNkxrR_EPlkhqZipmLGBjJ_u4V1_rrw-7DGED1q0vXHeBMaQwBMUfVSRGZb-hWmocTzzqQJ8WkyoXenqLs-H2WQ"
+						},
+						{
+							"key": "v",
+							"value": "5.131"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "9. Удаление альбома",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://api.vk.com/method/photos.deleteAlbum?album_id=306489063&access_token=vk1.a.oglwfAkpT-b1jkdn8qwTfstcUoVSwDAUP6k0yela3mlh0VVoJpNhjq48q9mmj09MO8zD-VpZQqkbjSKHBTpeJDb-aBDcDgacS6hPLgbqx41PVzuL07Hdt0DVV1TnZmdmNkxrR_EPlkhqZipmLGBjJ_u4V1_rrw-7DGED1q0vXHeBMaQwBMUfVSRGZb-hWmocTzzqQJ8WkyoXenqLs-H2WQ&v=5.131",
+					"protocol": "https",
+					"host": [
+						"api",
+						"vk",
+						"com"
+					],
+					"path": [
+						"method",
+						"photos.deleteAlbum"
+					],
+					"query": [
+						{
+							"key": "album_id",
+							"value": "306489063"
+						},
+						{
+							"key": "access_token",
+							"value": "vk1.a.oglwfAkpT-b1jkdn8qwTfstcUoVSwDAUP6k0yela3mlh0VVoJpNhjq48q9mmj09MO8zD-VpZQqkbjSKHBTpeJDb-aBDcDgacS6hPLgbqx41PVzuL07Hdt0DVV1TnZmdmNkxrR_EPlkhqZipmLGBjJ_u4V1_rrw-7DGED1q0vXHeBMaQwBMUfVSRGZb-hWmocTzzqQJ8WkyoXenqLs-H2WQ"
+						},
+						{
+							"key": "v",
+							"value": "5.131"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "vk1.a.oglwfAkpT-b1jkdn8qwTfstcUoVSwDAUP6k0yela3mlh0VVoJpNhjq48q9mmj09MO8zD-VpZQqkbjSKHBTpeJDb-aBDcDgacS6hPLgbqx41PVzuL07Hdt0DVV1TnZmdmNkxrR_EPlkhqZipmLGBjJ_u4V1_rrw-7DGED1q0vXHeBMaQwBMUfVSRGZb-hWmocTzzqQJ8WkyoXenqLs-H2WQ",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
